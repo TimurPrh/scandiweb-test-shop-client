@@ -1,0 +1,40 @@
+.cart-icon {
+  position: relative;
+  align-items: center;
+  &__header{
+    display: flex;
+    padding: 0;
+    cursor: pointer;
+  }
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -9px;
+    left: 14px;
+    width: 20px;
+    height: 20px;
+    background: var(--text-color);
+    border-radius: 60px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    &_empty {
+      display: none;
+    }
+  }
+  &__list {
+    position: absolute;
+    top: 49px;
+    right: -35px;
+    display: none;
+    &_visible {
+      display: block;
+      background-color: #fff;
+      z-index: 3;
+    }
+  }
+}

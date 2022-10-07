@@ -1,0 +1,22 @@
+.small-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  &__plus, &__minus {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  &__count {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    color: var(--text-color);
+  }
+}

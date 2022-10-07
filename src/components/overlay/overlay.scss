@@ -1,0 +1,11 @@
+.overlay {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 80px;
+  background: rgba(57, 55, 72, 0.22);
+  &_active {
+    display: block;
+  }
+}

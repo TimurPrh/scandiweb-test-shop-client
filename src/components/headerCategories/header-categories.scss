@@ -1,0 +1,36 @@
+.header-categories {
+  display: flex;
+  overflow-x: auto;
+  max-width: 45%;
+  &__item {
+    text-transform: uppercase;
+    padding: 0 16px 32px 16px;
+    color: var(--text-color);
+    cursor: pointer;
+    &_active {
+      color: var(--primary-color);
+      border-bottom: 1px solid var(--primary-color);
+      padding-bottom: 31px;
+    }
+    &:hover, &:focus {
+      outline: none;
+      color: var(--primary-color);
+    }
+  }
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+}
