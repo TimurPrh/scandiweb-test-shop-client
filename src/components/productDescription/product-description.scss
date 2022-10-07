@@ -1,132 +1,177 @@
 .product-description {
-  padding: 80px 0 178px 0;
   display: grid;
+
+  padding: 80px 0 178px;
   grid-template-columns: 1fr 1002px 1fr;
+
   &__left {
     display: flex;
     flex-direction: column;
   }
+
   &__small-image {
     width: 80px;
     height: 80px;
     margin-top: 40px;
     object-fit: cover;
+
     cursor: pointer;
+
     &:first-child {
       margin-top: 0;
     }
   }
+
   &__center {
     display: flex;
-    justify-content: space-between;
     align-items: start;
+    justify-content: space-between;
   }
+
   &__main-image {
     position: relative;
+
     width: 610px;
+
     img {
       width: 100%;
       object-fit: contain;
     }
   }
+
   &__stock {
     position: absolute;
-    left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%;
+
     display: none;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 160%;
+
+    transform: translate(-50%, -50%);
+
     color: var(--light-text-color);
+
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 160%;
+
     &_not-available {
       display: block;
+
       & + img {
-        opacity: .5;
+        opacity: 0.5;
       }
     }
   }
+
   &__description {
     width: 292px;
   }
+
   &__description-brand {
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 27px;
     color: var(--text-color);
+
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 27px;
   }
+
   &__description-name {
     margin-top: 16px;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 27px;
+
     color: var(--text-color);
+
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 27px;
   }
+
   &__attributes {
     margin-top: 43px;
   }
+
   &__attribute {
     margin-top: 24px;
+
     &:first-child {
       margin-top: 0;
     }
   }
+
   &__attribute-header {
-    font-family: 'Roboto';
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 18px;
     color: var(--text-color);
+
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
   }
+
   &__price-header {
     margin-top: 36px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 18px;
+
     color: var(--text-color);
+
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 18px;
   }
+
   &__price-number {
     margin-top: 20px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 18px;
+
     color: var(--text-color);
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 18px;
   }
+
   &__add {
-    margin-top: 30px;
     width: 100%;
+    margin-top: 30px;
     padding: 15px 0;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 120%;
+
+    cursor: pointer;
+    transition: all 0.3s;
     text-align: center;
     text-transform: uppercase;
-    color: #FFFFFF;
-    background-color: var(--primary-color);
-    transition: all .3s;
+
+    color: #FFF;
     border: 1px solid var(--primary-color);
-    cursor: pointer;
-    &:hover:not(:disabled), &:focus:not(:disabled) {
-      outline: none;
-      color: var(--primary-color);
-      background-color: #FFFFFF;
+    background-color: var(--primary-color);
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 120%;
+
+    &:disabled {
+      cursor: inherit;
+
+      opacity: 0.5;
     }
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      color: var(--primary-color);
+      outline: none;
+      background-color: #FFF;
+    }
+
     &:focus:not(:disabled) {
       box-shadow: var(--primary-color) 0 0 4px 2px;
     }
-    &:disabled {
-      opacity: .5;
-      cursor: inherit;
-    }
   }
+
   &__text {
     margin-top: 40px;
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 160%;
+
     color: var(--text-color);
+
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 160%;
   }
 }

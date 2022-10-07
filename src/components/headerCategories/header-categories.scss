@@ -1,36 +1,47 @@
 .header-categories {
   display: flex;
   overflow-x: auto;
+
   max-width: 45%;
+
   &__item {
-    text-transform: uppercase;
-    padding: 0 16px 32px 16px;
-    color: var(--text-color);
+    padding: 0 16px 32px;
+
     cursor: pointer;
+    text-transform: uppercase;
+
+    color: var(--text-color);
+
     &_active {
+      padding-bottom: 31px;
+
       color: var(--primary-color);
       border-bottom: 1px solid var(--primary-color);
-      padding-bottom: 31px;
     }
-    &:hover, &:focus {
-      outline: none;
+
+    &:hover,
+    &:focus {
       color: var(--primary-color);
+      outline: none;
     }
   }
 
   &::-webkit-scrollbar {
     height: 4px;
   }
+
   /* Track */
   &::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #F1F1F1;
   }
+
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: #888;
   }
+
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
   }
 }
