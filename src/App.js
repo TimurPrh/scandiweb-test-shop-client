@@ -27,10 +27,16 @@ function mapDispatchToProps(dispatch) {
 class App extends Component {
   componentWillMount() {
     const options = JSON.parse(localStorage.getItem('options'))
-    if (options && options.category && options.currency && options.cart) {
-      this.props.changeCategory(options.category)
-      this.props.changeCurrency(options.currency)
-      this.props.setCart(options.cart)
+    if (options) {
+      if (options.category) {
+        this.props.changeCategory(options.category)
+      }
+      if (options.currency && options.currency.label && options.currency.symbol) {
+        this.props.changeCurrency(options.currency) 
+      }
+      if (options.cart.length > 0) {
+        this.props.setCart(options.cart)
+      }
     }
   }
 
@@ -56,7 +62,6 @@ class App extends Component {
   }
 }
 
-// export default App;
 
 export default connect(
   mapStateToProps, mapDispatchToProps,

@@ -24,14 +24,10 @@ class Overlay extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({height: document.documentElement.scrollHeight - 80})
-  }
-
   componentDidUpdate() {
     this.setState(state => {
-      if (state.height !== document.documentElement.scrollHeight - 80) {
-        return {height: document.documentElement.scrollHeight - 80}
+      if (state.height !== document.documentElement.scrollHeight - 80 || state.width !== document.documentElement.scrollWidth) {
+        return {height: document.documentElement.scrollHeight - 80, width: document.documentElement.scrollWidth}
       }
     })
   }
@@ -45,7 +41,7 @@ class Overlay extends Component {
     return (
       <div 
         className={this.props.isVisibleOverlay ? 'overlay overlay_active' : 'overlay'}
-        style={{height: this.state.height}}
+        style={{height: this.state.height, width: this.state.width}}
         >
         
       </div>

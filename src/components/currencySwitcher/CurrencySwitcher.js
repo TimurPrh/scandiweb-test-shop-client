@@ -29,7 +29,7 @@ class CurrencySwitcher extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.selectedCurrency) {
+    if (!this.props.selectedCurrency.label || !this.props.selectedCurrency.symbol) {
       this.props.changeCategory({
         label: this.props.currencies[0].label,
         symbol: this.props.currencies[0].symbol

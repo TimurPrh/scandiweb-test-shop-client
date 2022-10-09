@@ -17,7 +17,7 @@ const defaultOptions = {
 }
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
+  uri: 'http://scandishopapi.na4u.ru/',
   cache: new InMemoryCache(),
   defaultOptions: defaultOptions,
 });
