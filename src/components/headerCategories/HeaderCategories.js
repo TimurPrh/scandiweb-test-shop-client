@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeCategoryAction } from '../../store/selectedOptionsStore';
+import withRouter from '../withRouter/withRouter';
 import './header-categories.scss'
 
 function mapStateToProps(state) {
@@ -36,7 +37,7 @@ class HeaderCategories extends Component {
 
     return (
       <div className='header-categories'>
-        <>
+        <nav>
           {this.props.categories.map(cat => (
             <button 
               className={getClassName(cat.name)} 
@@ -44,11 +45,12 @@ class HeaderCategories extends Component {
               onClick={(e) => {
                 this.props.changeCategory(cat.name)
                 e.target.blur()
+                this.props.navigate('/')
               }}>
               {cat.name}
             </button>
           ))}
-        </>
+        </nav>
       </div>
     );
   }
@@ -56,4 +58,4 @@ class HeaderCategories extends Component {
 
 export default connect(
   mapStateToProps, mapDispatchToProps,
-)(HeaderCategories);
+)(withRouter(HeaderCategories));
