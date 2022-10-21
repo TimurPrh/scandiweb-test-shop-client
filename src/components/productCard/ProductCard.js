@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addItemAction } from '../../store/cartStore';
+import { changeModalProductAction, changeModalVisibleAction, changeProductScrollTopAction } from '../../store/modalAttributesStore';
+import { changeOverlayVisibleAction } from '../../store/selectedOptionsStore';
 import Cart from './cart.svg'
 import './product-card.scss'
 
@@ -13,7 +15,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addToCart: (item) => dispatch(addItemAction(item))
+    addToCart: (item) => dispatch(addItemAction(item)),
+    changeModalProduct: (item) => dispatch(changeModalProductAction(item)),
+    changeOverlayVisible: (bool) => dispatch(changeOverlayVisibleAction(bool)),
+    changeModalVisible: (bool) => dispatch(changeModalVisibleAction(bool)),
+    changeProductScrollTop: (top) => dispatch(changeProductScrollTopAction(top))
   }
 }
 
@@ -52,33 +58,46 @@ class ProductCard extends Component {
     
   }
   addToCart(e, product) {
-    const attributes = product.attributes.map(attribute => {
-      const newAttr = {
-        name: attribute.name,
-        type: attribute.type,
-        id: attribute.id,
-        displayValue: attribute.items[0].displayValue,
-        value: attribute.items[0].value,
-        valueId: attribute.items[0].id
-      }
+    if (this.props.product.inStock) {
+      if (product.attributes.length > 0) {
+        this.props.changeProductScrollTop(document.documentElement.scrollTop)
+        this.props.changeModalProduct(product)
 
-      return newAttr
-    })
-
-    const item = {
-      brand: product.brand,
-      name: product.name,
-      id: product.id,
-      gallery: product.gallery,
-      prices: product.prices,
-      availableAttributes: product.attributes,
-      attributes
-    }
-
-    this.props.addToCart(item)
+        this.props.changeOverlayVisible(true)
+        this.props.changeModalVisible(true)
+  
+        this.cartLinkRef.current.blur()
+        this.cartButtonRef.current.blur()
+      } else {
+        const attributes = product.attributes.map(attribute => {
+          const ind = this.state.selectedAttributes.findIndex(selectedAttribute => {
+            return selectedAttribute.id === attribute.id
+          })
+          const newAttr = {
+            name: attribute.name,
+            type: attribute.type,
+            id: attribute.id,
+            displayValue: this.state.selectedAttributes[ind].displayValue,
+            value: this.state.selectedAttributes[ind].value,
+            valueId: this.state.selectedAttributes[ind].valueId
+          }
     
-    this.cartLinkRef.current.blur()
-    this.cartButtonRef.current.blur()
+          return newAttr
+        })
+    
+        const item = {
+          brand: product.brand,
+          name: product.name,
+          id: product.id,
+          gallery: product.gallery,
+          prices: product.prices,
+          availableAttributes: product.attributes,
+          attributes
+        }
+    
+        this.props.addToCart(item)
+      }
+    }
   }
 
   componentDidMount() {
@@ -131,13 +150,13 @@ class ProductCard extends Component {
       <div className='product-card'
         onMouseEnter={this.enterHandle}
         onMouseLeave={this.leaveHandle}
+        ref={this.cartLinkRef}
         >
         <Link 
           to={`/products/${this.props.product.id}`}
           className={getLinkClass()}
           onFocus={this.focusHandle}
           onBlur={this.leaveHandle}
-          ref={this.cartLinkRef}
           >
           <div className='product-card__image'>
             <div className={getStockClass()}>

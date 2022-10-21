@@ -92,8 +92,8 @@
     border-radius: 50%;
     background-color: var(--primary-color);
 
-    &:hover,
-    &:focus {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
       opacity: 1;
       outline: none;
       box-shadow: var(--primary-color) 0 0 10px 2px;

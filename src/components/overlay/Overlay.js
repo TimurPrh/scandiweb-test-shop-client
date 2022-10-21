@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { changeModalVisibleAction } from '../../store/modalAttributesStore';
 import { changeCartVisibleAction, changeOverlayVisibleAction } from '../../store/selectedOptionsStore';
 import './overlay.scss'
 
@@ -12,7 +13,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     changeOverlayVisible: (bool) => dispatch(changeOverlayVisibleAction(bool)),
-    changeCartVisible: (bool) => dispatch(changeCartVisibleAction(bool))
+    changeCartVisible: (bool) => dispatch(changeCartVisibleAction(bool)),
+    changeModalVisible: (bool) => dispatch(changeModalVisibleAction(bool))
   }
 }
 
@@ -35,6 +37,7 @@ class Overlay extends Component {
   componentWillUnmount() {
     this.props.changeOverlayVisible(false)
     this.props.changeCartVisible(false)
+    this.props.changeModalVisible(false)
   }
 
   render() {

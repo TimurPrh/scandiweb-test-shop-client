@@ -1,0 +1,133 @@
+.modal-attributes {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100vh;
+
+  &__card {
+    width: 400px;
+    padding: 20px;
+
+    background-color: #FFF;
+  }
+
+  &__select-text {
+    text-align: center;
+
+    color: var(--primary-color);
+
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+
+  &__brand {
+    margin-top: 16px;
+
+    color: var(--text-color);
+
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+
+  &__name {
+    margin-top: 16px;
+
+    color: var(--text-color);
+
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+
+  &__attributes {
+    margin-top: 43px;
+  }
+
+  &__attribute {
+    margin-top: 24px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__attribute-header {
+    color: var(--text-color);
+
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+
+  &__price-header {
+    margin-top: 36px;
+
+    color: var(--text-color);
+
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 18px;
+  }
+
+  &__price-number {
+    margin-top: 20px;
+
+    color: var(--text-color);
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+
+  &__add {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px 0;
+
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFF;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 120%;
+
+    &:disabled {
+      cursor: inherit;
+
+      opacity: 0.5;
+    }
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      color: var(--primary-color);
+      outline: none;
+      background-color: #FFF;
+    }
+
+    &:focus:not(:disabled) {
+      box-shadow: var(--primary-color) 0 0 4px 2px;
+    }
+  }
+
+  &_visible {
+    display: flex;
+  }
+}

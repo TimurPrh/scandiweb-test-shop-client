@@ -134,6 +134,7 @@ html {
 }
 
 .container {
+  position: relative;
   width: 1268px;
   margin: 0 auto;
   padding-right: 15px;
